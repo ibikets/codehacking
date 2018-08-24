@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UsersRequest;
-use App\Photo;
-use App\Role;
 use App\Statu;
-use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class AdminUsersController extends Controller
+class StatusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,9 +18,9 @@ class AdminUsersController extends Controller
     {
         //
 
-        $users = User::all();
+        $status = Statu::all();
 
-        return view('admin.users.index', compact('users'));
+        return view('admin.status.index', compact('status'));
     }
 
     /**
@@ -36,10 +32,7 @@ class AdminUsersController extends Controller
     {
         //
 
-        $roles = Role::lists('name', 'id')->all();
-        $status = Statu::lists('name','id')->all();
-
-        return view('admin.users.create', compact('roles', 'status'));
+        return view('admin.status.create');
     }
 
     /**
@@ -48,30 +41,13 @@ class AdminUsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UsersRequest $request)
+    public function store(Request $request)
     {
         //
 
-        $input = $request->all();
+        Statu::create($request->all());
 
-        if ($file = $request->file('photo_id')){
-
-            $name = time() . $file->getClientOriginalName();
-
-            $file->move('images', $name);
-
-            $photo = Photo::create(['file'=>$name]);
-
-            $input['photo_id'] = $photo->id;
-
-
-        }
-
-        $input['password'] = bcrypt($request->password);
-
-        User::create($input);
-
-//        return redirect('/admin/users');
+        return view('admin.status.create');
     }
 
     /**
@@ -83,7 +59,8 @@ class AdminUsersController extends Controller
     public function show($id)
     {
         //
-        return view('admin.users.show');
+
+        return view('admin.status.show');
     }
 
     /**
@@ -96,7 +73,7 @@ class AdminUsersController extends Controller
     {
         //
 
-        return view('admin.users.edit');
+        return view('admin.status.edit');
     }
 
     /**

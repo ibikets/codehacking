@@ -27,7 +27,7 @@ Create Page
 
             <div class="form-group">
                 {!! Form::label('status', 'Status: ') !!}
-                {!! Form::select('is_active', ['0'=> 'Not Active', '1'=>'Active'], 0, ['class'=>'form-control'] ) !!}
+                {!! Form::select('is_active', [''=> 'Choose Status'] + $status, null, ['class'=>'form-control'] ) !!}
             </div>
 
             <div class="form-group">
@@ -37,7 +37,7 @@ Create Page
 
             <div class="form-group">
                 {!! Form::label('file', 'Passport: ') !!}
-                {!! Form::file('file', ['class'=>'form-control'] ) !!}
+                {!! Form::file('photo_id', ['class'=>'form-control'] ) !!}
             </div>
 
             <div class="form-group">

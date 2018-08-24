@@ -4,11 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Photo extends Model
+class Statu extends Model
 {
     //
 
-    protected $fillable = ['file'];
-
-
+    protected $fillable = ['name'];
 }
