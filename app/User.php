@@ -32,7 +32,7 @@ class User extends Authenticatable
 
     public function statu(){
 
-        return $this->belongsTo('App\Statu');
+        return $this->belongsTo('App\Statu', 'is_active');
     }
 
     public function photo(){

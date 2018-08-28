@@ -47,7 +47,7 @@ class StatusController extends Controller
 
         Statu::create($request->all());
 
-        return view('admin.status.create');
+        return redirect('admin/status');
     }
 
     /**
