@@ -10,6 +10,11 @@ Lists Users Page
 @section('content')
 
     <h1>Admin Users Page</h1>
+    @if(Session::has('msg'))
+
+        <p class="alert alert-success">{{session('msg')}}</p>
+
+        @endif
 
     <table class="table">
         <thead>
