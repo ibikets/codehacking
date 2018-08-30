@@ -20,9 +20,9 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>User_id</th>
-                <th>Category_id</th>
-                <th>Photo_id</th>
+                <th>Photo</th>
+                <th>User</th>
+                <th>Category</th>
                 <th>Title</th>
                 <th>Content</th>
                 <th>Creates At</th>
@@ -35,7 +35,7 @@
                     <td>{{$post->id}}</td>
                     <td><img height="50" src="{{$post->photo ? $post->photo->file : 'No Media Available'}}" alt=""></td>
                     <td>{{$post->user->name}}</td>
-                    <td>{{$post->category_id}}</td>
+                    <td>{{$post->category ? $post->category->name : 'Uncategorized'}}</td>
                     <td><a href="{{route('admin.posts.edit', $post->id)}}">{{$post->title}}</a></td>
                     <td>{{$post->body}}</td>
                     <td>{{$post->created_at->diffForHumans()}}</td>
