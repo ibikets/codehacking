@@ -6,6 +6,7 @@ use App\Statu;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Session;
 
 class StatusController extends Controller
 {
@@ -47,6 +48,8 @@ class StatusController extends Controller
 
         Statu::create($request->all());
 
+        Session::flash('msg', 'Status Created');
+
         return redirect('admin/status');
     }
 
@@ -73,7 +76,11 @@ class StatusController extends Controller
     {
         //
 
-        return view('admin.status.edit');
+        $statu =Statu::findOrFail($id);
+
+
+
+        return view('admin.status.edit', compact('statu'));
     }
 
     /**
@@ -86,6 +93,12 @@ class StatusController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        Statu::findOrFail($id)->update($request->all());
+
+        Session::flash('msg', 'Status Updated');
+
+        return redirect('admin/status');
     }
 
     /**
@@ -97,5 +110,11 @@ class StatusController extends Controller
     public function destroy($id)
     {
         //
+
+        Statu::findOrfail($id)->delete();
+
+        Session::flash('msg', 'Status Deleted');
+
+        return redirect('admin/status');
     }
 }

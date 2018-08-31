@@ -17,7 +17,7 @@
     @endif
     <h3>Created by: {{Auth::user()->name}}</h3>
 
-    <div class="row">
+       <div class="row">
 
         {!! Form::open(['method'=>'POST', 'action'=>'AdminPostsController@store', 'files'=>true]) !!}
 
@@ -44,7 +44,7 @@
         </div>
 
         <div class="form-group">
-            {!! Form::submit('Create', ['class'=>'btn btn-primary']) !!}
+            {!! Form::submit('CREATE POST', ['class'=>'btn btn-primary']) !!}
         </div>
 
         {!! Form::close() !!}
