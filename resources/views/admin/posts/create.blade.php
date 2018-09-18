@@ -9,6 +9,8 @@
 
 @section('content')
 
+    @include('includes.tinyeditor')
+
     <h1>Create New Post</h1>
     @if(Session::has('msg'))
 
